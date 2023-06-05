@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -15,7 +18,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .ts,.tsx",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +44,13 @@
     "@types/react-dom": "^18.2.4",
     "@types/styled-components": "^5.1.26",
     "eslint-plugin-jsx-a11y": "^6.7.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8"
+  },
+  "lint-staged": {
+    "*.ts": "npx tsc --noEmit",
+    "*.{js,jsx,ts,tsx}": "npx eslint",
+    "*.{js,jsx,ts,tsx,html,css}": "npx prettier --check"
   }
 }
