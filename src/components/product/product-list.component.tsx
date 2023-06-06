@@ -30,7 +30,7 @@ const Price = styled.div`
     text-align: right;
     padding-top: 20px;
 `;
-const ProductCardComponent: FC<ProductCardProps> = ({ id, description, price, image, rating, title, category }) => {
+const ProductListComponent: FC<ProductCardProps> = ({ id, description, price, image, rating, title, category }) => {
     return (
         <Wrapper>
             <ImageWrapper>
@@ -45,4 +45,4 @@ const ProductCardComponent: FC<ProductCardProps> = ({ id, description, price, im
     );
 };
 
-export default memo(ProductCardComponent);
+export default memo(ProductListComponent);
