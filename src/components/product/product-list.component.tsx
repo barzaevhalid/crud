@@ -1,6 +1,7 @@
 import React, { memo, FC } from 'react';
 import { ProductModel } from '../../models/product.model';
 import styled from 'styled-components';
+import Description from '../Description';
 
 type ProductCardProps = ProductModel;
 
@@ -23,7 +24,7 @@ const TextWrapper = styled.div``;
 const Title = styled.h1`
     text-align: center;
 `;
-const Description = styled.div`
+const Desc = styled.div`
     text-align: center;
 `;
 const Price = styled.div`
@@ -38,7 +39,9 @@ const ProductListComponent: FC<ProductCardProps> = ({ id, description, price, im
             </ImageWrapper>
             <TextWrapper>
                 <Title>{title}</Title>
-                <Description>{description}</Description>
+                <Desc>
+                    <Description text={description} maxLength={150} />
+                </Desc>
                 <Price>{price} $</Price>
             </TextWrapper>
         </Wrapper>
