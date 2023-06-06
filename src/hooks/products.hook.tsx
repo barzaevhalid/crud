@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 import { ProductModel } from '../models/product.model';
 import { fetchProductsApi } from '../services/product-api.service';
+import { useAppDispatch, useAppSelector } from '../store/store';
+import { setProductsAction } from '../store/product/product.slice';
+import { selectProducts } from '../models/state/product.selectors';
 
 export const useProducts = () => {
-    const [product, setProduct] = useState<ProductModel[]>([]);
+    const products = useAppSelector(selectProducts);
     const [err, setErr] = useState('');
     const [loading, setLoading] = useState('loading');
+
+    const dispatch = useAppDispatch();
+
     const fetchProducts = async () => {
         setLoading('loading');
         try {
             const data = await fetchProductsApi();
-            setProduct(data as unknown as ProductModel[]);
+            dispatch(setProductsAction(data as unknown as ProductModel[]));
             setLoading('loaded');
             setErr('');
         } catch (e) {
@@ -20,5 +26,5 @@ export const useProducts = () => {
     useEffect(() => {
         fetchProducts();
     }, []);
-    return { product, loading, err };
+    return { products, loading, err };
 };
