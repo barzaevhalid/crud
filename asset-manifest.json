@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/crud/static/js/main.026eee82.js",
+    "main.js": "/crud/static/js/main.467dea37.js",
     "static/media/plus.svg": "/crud/static/media/plus.173e98d0c7ade078ba0090d180aea4f4.svg",
     "index.html": "/crud/index.html",
-    "main.026eee82.js.map": "/crud/static/js/main.026eee82.js.map"
+    "main.467dea37.js.map": "/crud/static/js/main.467dea37.js.map"
   },
   "entrypoints": [
-    "static/js/main.026eee82.js"
+    "static/js/main.467dea37.js"
   ]
 }
