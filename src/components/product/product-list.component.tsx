@@ -26,6 +26,7 @@ const Title = styled.h1`
 `;
 const Desc = styled.div`
     text-align: center;
+    width: 600px;
 `;
 const Price = styled.div`
     text-align: right;

@@ -13,9 +13,11 @@ const Description: React.FC<IProp> = ({ text, maxLength = maxLengthDefaultValue 
         <>
             {desc}
             {text.length > 150 && (
-                <button onClick={() => setIsVisible(prevState => !prevState)}>
-                    {isVisible ? 'hide details' : 'show details'}
-                </button>
+                <div>
+                    <button onClick={() => setIsVisible(prevState => !prevState)}>
+                        {isVisible ? 'hide details' : 'show details'}
+                    </button>
+                </div>
             )}
         </>
     );

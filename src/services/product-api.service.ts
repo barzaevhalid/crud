@@ -10,3 +10,11 @@ export const fetchProductsApi = async (): Promise<AxiosResponse<ProductModel[]>>
         throw new Error('Упс!');
     }
 };
+export const createProductApi = async (product: Partial<ProductModel>) => {
+    try {
+        const { data } = await axios.post(`${PRODUCTS_URL}`, product);
+        return data;
+    } catch (e) {
+        throw new Error('Упс!');
+    }
+};
