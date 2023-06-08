@@ -25,7 +25,12 @@ const ProductCreationForm: React.FC<IFormProps> = ({ onSubmit }) => {
     return (
         <form onSubmit={e => handleSubmit(e)}>
             <div>
-                <Input type='text' className='modalTitle' onInputValueChange={onInputValueChange} />
+                <Input
+                    type='text'
+                    placeholder='Заголовок'
+                    className='modalTitle'
+                    onInputValueChange={onInputValueChange}
+                />
             </div>
             <div>
                 <textarea onChange={e => setStateForm(prevState => ({ ...prevState, description: e.target.value }))} />

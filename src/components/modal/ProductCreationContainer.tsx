@@ -20,11 +20,12 @@ const ProductCreationContainer = () => {
         if (!product.title) {
             alert('Введите заголовок');
         } else {
+            setModalActive(false);
             const data = await createProductApi(product);
             dispatch(
                 setProduct({
                     ...data,
-                    id: Math.floor(Math.random() * 100),
+                    id: Math.floor(Math.random() * 100000),
                     image: 'https://bing.ioliu.cn/v1/rand',
                     price: Math.floor(Math.random() * 100),
                 })
