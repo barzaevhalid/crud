@@ -17,15 +17,19 @@ const ProductCreationContainer = () => {
         setModalActive(false);
     };
     const handleSubmit = async (product: Partial<ProductModel>) => {
-        const data = await createProductApi(product);
-        dispatch(
-            setProduct({
-                ...data,
-                id: Math.floor(Math.random() * 100),
-                image: 'https://bing.ioliu.cn/v1/rand',
-                price: Math.floor(Math.random() * 100),
-            })
-        );
+        if (!product.title) {
+            alert('Введите заголовок');
+        } else {
+            const data = await createProductApi(product);
+            dispatch(
+                setProduct({
+                    ...data,
+                    id: Math.floor(Math.random() * 100),
+                    image: 'https://bing.ioliu.cn/v1/rand',
+                    price: Math.floor(Math.random() * 100),
+                })
+            );
+        }
     };
     return (
         <div>

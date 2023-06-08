@@ -2,12 +2,14 @@
   "name": "crud",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://barzaevhalid.github.io/crud/",
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.3",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.7",
@@ -22,7 +24,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
