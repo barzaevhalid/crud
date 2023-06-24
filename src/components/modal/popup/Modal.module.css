@@ -1,0 +1,6 @@
+.close{
+    min-width: 100px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+}

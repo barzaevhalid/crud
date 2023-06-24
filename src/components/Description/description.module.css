@@ -1,0 +1,18 @@
+.btnWrapper {
+    position: relative;
+    top:   10px;
+}
+.showText {
+    color: black;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+}
+.showText:hover {
+    color: #797979;
+}
+.desc {
+
+}

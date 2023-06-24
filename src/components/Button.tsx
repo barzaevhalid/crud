@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
-interface IProp extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     innerClassName: string;
     children: React.ReactNode;
+    onClick?: () => void;
 }
-const Button: React.FC<IProp> = ({ innerClassName, children, ...rest }) => {
+
+const Button = ({ onClick, children, innerClassName, ...props }: ButtonProps) => {
     return (
-        <button className={innerClassName} {...rest}>
+        <button onClick={onClick} className={innerClassName} {...props}>
             {children}
         </button>
     );

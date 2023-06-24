@@ -1,0 +1,22 @@
+.openModalBtn  {
+    cursor: pointer;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    right: 30px;
+    bottom: 50px;
+    border: none;
+    padding: 20px;
+    background: #50576c;
+    border-radius: 100%;
+    color: #fff;
+    -o-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    font-weight: 700;
+
+}
+.openModalBtn:hover {
+    transform: rotate(360deg);
+}
+

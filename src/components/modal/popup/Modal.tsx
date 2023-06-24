@@ -1,6 +1,14 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { ReactNode } from "react";
+import s from "./Modal.module.css";
+import styled from "styled-components";
 
+import Button from "../../Button";
+
+interface ModalProps {
+    closeModal: () => void;
+    title?: string;
+    children?: ReactNode;
+}
 const ModalWindow = styled.div`
     height: 100vh;
     width: 100vw;
@@ -17,31 +25,24 @@ const ModalContent = styled.div`
     border-radius: 12px;
     background-color: white;
     width: 400px;
-    height: 200px;
 `;
-const OnClose = styled.button`
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-`;
+
 const ModalHeader = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-interface IProp {
-    closeModal: () => void;
-    title?: string;
-    children?: ReactNode;
-}
-const Modal: React.FC<IProp> = ({ closeModal, title, children }) => {
+
+const Modal = ({ closeModal, title, children }: ModalProps) => {
     return (
         <ModalWindow onClick={closeModal}>
             <ModalContent onClick={e => e.stopPropagation()}>
-                {title}
                 <ModalHeader>
-                    {children}
-                    <OnClose onClick={closeModal}>X</OnClose>
+                    <div>{title}</div>
+                    <Button onClick={closeModal} innerClassName={s.close}>
+                        Close
+                    </Button>
                 </ModalHeader>
+                <div>{children}</div>
             </ModalContent>
         </ModalWindow>
     );
