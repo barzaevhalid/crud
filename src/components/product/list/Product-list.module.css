@@ -7,3 +7,19 @@
     cursor: pointer;
     font-size: 19px;
 }
+.modalBtn {
+    width: 100px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+.greenBtn {
+    background: green;
+    color: #fff;
+}
+.redBtn {
+    background: red;
+    color: #fff;
+}
+

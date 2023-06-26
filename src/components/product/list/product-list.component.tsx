@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { ProductModel } from "../../../models/product.model";
 import Description from "../../Description";
 import styled from "styled-components";
@@ -11,6 +11,7 @@ interface ProductCardProps extends ProductModel {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   width: 900px;
   display: flex;
   justify-content: flex-start;
@@ -47,7 +48,35 @@ const Price = styled.div`
 const Symbol = styled.span`
   font-size: 12px;
 `;
+const ModalBlock = styled.div`
+  position: absolute;
+  width: 300px;
+  background-color: #fff;
+  right: 10px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+`;
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+`;
 const ProductListComponent = memo<ProductCardProps>(({ id, description, price, image, title, onClick }) => {
+  const [confirmation, setConfirmation] = useState(false);
+
+  const openConfirmation = () => {
+    setConfirmation(true);
+  };
+
+  const closeConfirmation = () => {
+    setConfirmation(false);
+  };
+
+  const onConfirmation = () => {
+    onClick(id);
+  };
+
   return (
     <Wrapper>
       <ImageWrapper>
@@ -66,9 +95,22 @@ const ProductListComponent = memo<ProductCardProps>(({ id, description, price, i
           <Symbol>$</Symbol>
         </Price>
       </TextWrapper>
-      <Button innerClassName={s.btn} onClick={() => onClick(id)}>
+      <Button innerClassName={s.btn} onClick={openConfirmation}>
         x
       </Button>
+      {confirmation && (
+        <ModalBlock>
+          Вы уверены что хотите удалить продукт?
+          <ButtonsWrapper>
+            <Button innerClassName={`${s.modalBtn} ${s.greenBtn}`} onClick={onConfirmation}>
+              Да
+            </Button>
+            <Button innerClassName={`${s.modalBtn} ${s.redBtn}`} onClick={closeConfirmation}>
+              Нет
+            </Button>
+          </ButtonsWrapper>
+        </ModalBlock>
+      )}
     </Wrapper>
   );
 });
