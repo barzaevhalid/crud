@@ -33,9 +33,6 @@ const ProductListContainer = () => {
   const onRemoveProduct = async (id: number) => {
     dispatch(removeProduct(id));
 
-    const { data } = await fetchDeleteProduct(id);
-
-    setRemovedProduct(prevState => ({ ...prevState, removed: true, title: data.title }));
     setTimeout(() => {
       setRemovedProduct(prevState => ({ ...prevState, removed: false }));
     }, 1000);

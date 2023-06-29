@@ -17,4 +17,11 @@ export default createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+  a  {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    color: #50576c;
+  }
 `;

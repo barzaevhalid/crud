@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { ProductModel } from "../models/product.model";
-import { fetchProductsApi, fetchViewProduct } from "../services/product-api.service";
+import { fetchProductsApi } from "../services/product-api.service";
 import { useAppDispatch, useAppSelector } from "../store/store";
-import { setProducts, setViewProduct } from "../store/product/product.slice";
-import { selectProducts, selectViewProduct } from "../models/state/product.selectors";
+import { setProducts } from "../store/product/product.slice";
+
+import { selectProducts } from "../models/state/product.selectors";
+
 import { LoadingState } from "../types";
+import { ProductModel } from "../models/product.model";
 
 export const useProducts = () => {
   const products = useAppSelector(selectProducts);
@@ -24,35 +26,27 @@ export const useProducts = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
-    // eslint-disable-next-line
+    if (!localStorage.getItem("products")) {
+      fetchProducts();
+    } else {
+      dispatch(setProducts(JSON.parse(localStorage.getItem("products") || "")));
+      setLoading(LoadingState.Loaded);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   return { products, loading };
 };
 
 export const useViewProduct = (id: number) => {
-  const [loading, setLoading] = useState(LoadingState.Loading);
-  const dispatch = useAppDispatch();
-  const product = useAppSelector(selectViewProduct);
+  const [loading, setLoading] = useState(LoadingState.Loaded);
 
-  const fetchProduct = async () => {
-    try {
-      setLoading(LoadingState.Loading);
+  //@ts-ignore
+  const products: ProductModel[] = JSON.parse(localStorage.getItem("products"));
+  const viewProduct = products.find(product => product.id === id);
 
-      const product = await fetchViewProduct(id);
-      dispatch(setViewProduct(product));
-
-      setLoading(LoadingState.Loaded);
-    } catch (e) {
-      setLoading(LoadingState.Error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProduct();
-    // eslint-disable-next-line
-  }, []);
-
-  return { product, loading };
+  return { viewProduct, loading };
 };
